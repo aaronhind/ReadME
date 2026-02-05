@@ -1,53 +1,47 @@
-# Incident Report
+# Incident Report – SSH Brute Force Attempt
 
-## Incident Summary
-Brief description of what happened.
-
-Example:
-Multiple failed SSH login attempts detected from external IP.
+Date: 2026-02-05  
+Analyst: Aaron Hind
 
 ---
 
-## Date & Time
-YYYY-MM-DD HH:MM
+## Summary
+Multiple failed SSH login attempts detected from external IP address indicating brute-force behavior.
 
 ---
 
-## Systems Affected
-- Linux VM
-- Test workstation
+## Timeline
+10:12 – First failed login attempt  
+10:13 – 25 rapid authentication failures  
+10:14 – Alert triggered in SIEM
 
 ---
 
-## Evidence Collected
-- Log entries from /var/log/auth.log
-- Source IP address
-- Packet capture summary
+## Evidence
+Log entries from /var/log/auth.log showing repeated failures:
+
+Failed password for invalid user root from 192.168.1.25
 
 ---
 
 ## Analysis
-Explain what occurred and why it is suspicious.
-
-Example:
-Repeated authentication failures indicate a possible brute force attempt.
+Pattern indicates automated brute-force attempt. No successful login detected.
 
 ---
 
-## Severity Level
-Low / Medium / High
-
-Reason:
-Explain the impact.
+## Severity
+Medium  
+Attack unsuccessful but persistent.
 
 ---
 
 ## Recommended Action
-- Block IP address
+- Block source IP
 - Monitor for repeated attempts
-- Strengthen password policy
+- Enforce stronger authentication policies
 
 ---
 
-## Analyst Notes
-Any additional observations.
+## Lessons Learned
+Early detection prevents account compromise. SIEM alerting worked as expected.
+
